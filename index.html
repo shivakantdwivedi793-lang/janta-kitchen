@@ -72,7 +72,7 @@ return {sub,del,total,lines};
 }
 function sendOrder(){
 const c=update(), name=document.getElementById("name").value.trim(), phone=document.getElementById("phone").value.trim(), address=document.getElementById("address").value.trim();
-if(!c.lines.length){alert("कृपया पहले कोई आइटम चुनें।");return}
+if(!c.lines.length){alert("कृपया पहले कोई आइटम चुनें।");return}if(c.sub<100){alert("न्यूनतम ऑर्डर ₹100 है। ₹100 से कम का ऑर्डर बुक नहीं होगा।");return}
 if(!name||!phone||!address){alert("कृपया नाम, मोबाइल नंबर और पूरा पता भरें।");return}
 let msg=`*Janta Kitchen - स्वाद की दुनिया*%0A%0A*नया Order*%0A${c.lines.join("%0A")}%0A%0ASubtotal: ₹${c.sub}%0ADelivery: ${c.del===0?"FREE":"₹"+c.del}%0A*Total: ₹${c.total}*%0A%0A*Customer Details*%0Aनाम: ${name}%0Aमोबाइल: ${phone}%0Aपता: ${address}`;
 window.open("https://wa.me/918470861474?text="+msg,"_blank");
