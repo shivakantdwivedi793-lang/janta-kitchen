@@ -118,7 +118,48 @@ function closeWelcome() {
 <div class="row"><span>Delivery</span><span id="delivery">₹0</span></div>
 <div class="row total"><span>Total</span><span id="total">₹0</span></div>
 
-<h3>📦 Delivery Details</h3>
+<style>
+.special-offer {
+  background: linear-gradient(135deg, #fff7d6, #ffffff);
+  border: 2px solid #d4af37;
+  border-radius: 18px;
+  padding: 18px 12px;
+  margin: 15px 0;
+  text-align: center;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+}
+
+.special-offer .offer-title {
+  font-size: 21px;
+  font-weight: bold;
+  color: #b8860b;
+  margin-bottom: 8px;
+}
+
+.special-offer p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.special-offer .offer-bottom {
+  color: #198754;
+  font-weight: bold;
+  font-size: 14px;
+}
+</style>
+
+<div class="special-offer">
+  <div class="offer-title">🏆 JANTA KITCHEN SPECIAL OFFER 🎁</div>
+  <p>
+    हर 15 दिन में सबसे ज्यादा ऑर्डर करने वाले ग्राहक को
+    <b>खास Discount</b> दिया जाएगा। 🎉
+  </p>
+  <div class="offer-bottom">
+    ❤️ ज्यादा ऑर्डर करें • ज्यादा बचत पाएं ❤️
+  </div>
+</div><h3>📦 Delivery Details</h3>
 <label>नाम</label>
 <input id="name" placeholder="अपना नाम लिखें">
 <label>मोबाइल नंबर</label>
