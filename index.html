@@ -19,7 +19,89 @@ label{font-weight:bold;font-size:14px}.order{width:100%;padding:15px;border:0;bo
 .small{font-size:13px;color:#666;line-height:1.5}.empty{color:#b71c1c;text-align:center;font-size:14px}
 </style>
 </head>
-<body><div class="notice">📢 ऑनलाइन ऑर्डर करने की सुविधा शनिवार से शुरू हो रही है।</div>
+<body><div id="welcomePopup" class="welcome-popup">
+  <div class="welcome-box">
+    <div class="welcome-icon">🍽️</div>
+    <h1>WELCOME TO<br>JANTA KITCHEN</h1>
+    <div class="welcome-line"></div>
+    <p class="tagline">स्वाद भी... सेहत भी...</p>
+    <p>🙏 आपका हार्दिक स्वागत है 🙏</p>
+    <h3>प्रोप्राइटर – शिवाकांत द्विवेदी</h3>
+    <button onclick="closeWelcome()">🛒 Order Now</button>
+  </div>
+</div>
+
+<style>
+.welcome-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.welcome-box {
+  width: 100%;
+  max-width: 380px;
+  background: linear-gradient(145deg,#fff8e7,#ffffff);
+  border-radius: 25px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 15px 50px rgba(0,0,0,.35);
+  border: 2px solid #d4af37;
+}
+
+.welcome-icon {
+  font-size: 48px;
+}
+
+.welcome-box h1 {
+  color: #8b4513;
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.welcome-line {
+  width: 100px;
+  height: 3px;
+  background: #d4af37;
+  margin: 12px auto;
+}
+
+.tagline {
+  font-size: 20px;
+  font-weight: bold;
+  color: #228b22;
+}
+
+.welcome-box h3 {
+  color: #555;
+  margin: 15px 0;
+}
+
+.welcome-box button {
+  background: #198754;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 30px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.welcome-box button:active {
+  transform: scale(.96);
+}
+</style>
+
+<script>
+function closeWelcome() {
+  document.getElementById("welcomePopup").style.display = "none";
+}
+</script><div class="notice">📢 ऑनलाइन ऑर्डर करने की सुविधा शनिवार से शुरू हो रही है।</div>
 <header>
 <h1>🍽️ Janta Kitchen</h1>
 <p>स्वाद की दुनिया • घर बैठे ऑर्डर करें</p>
