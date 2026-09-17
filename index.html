@@ -202,11 +202,59 @@ document.getElementById("cart").innerHTML=lines.length?lines.map(x=>`<div class=
 return {sub,del,total,lines};
 }
 function sendOrder(){
-const c=update(), name=document.getElementById("name").value.trim(), phone=document.getElementById("phone").value.trim(), address=document.getElementById("address").value.trim();
-if(!c.lines.length){alert("कृपया पहले कोई आइटम चुनें।");return}if(c.sub<100){alert("न्यूनतम ऑर्डर ₹100 है। ₹100 से कम का ऑर्डर बुक नहीं होगा।");return}
-if(!name||!phone||!address){alert("कृपया नाम, मोबाइल नंबर और पूरा पता भरें।");return}
-let msg=`*Janta Kitchen - स्वाद की दुनिया*%0A%0A*नया Order*%0A${c.lines.join("%0A")}%0A%0ASubtotal: ₹${c.sub}%0ADelivery: ${c.del===0?"FREE":"₹"+c.del}%0A*Total: ₹${c.total}*%0A%0A*Customer Details*%0Aनाम: ${name}%0Aमोबाइल: ${phone}%0Aपता: ${address}`;
-window.open("https://wa.me/918470861474?text="+msg,"_blank");
+  const c=update();
+  const name=document.getElementById("name").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  const address=document.getElementById("address").value.trim();
+
+  if(!c.lines.length){
+    alert("कृपया पहले कोई आइटम चुनें।");
+    return;
+  }
+
+  if(c.sub<100){
+    alert("न्यूनतम ऑर्डर ₹100 है। ₹100 से कम का ऑर्डर बुक नहीं होगा।");
+    return;
+  }
+
+  if(!name||!phone||!address){
+    alert("कृपया नाम, मोबाइल नंबर और पूरा पता भरें।");
+    return;
+  }
+
+  let bill=`<div id="billBox">
+  <h2>🧾 JANTA KITCHEN</h2>
+  <p><b>स्वाद भी... सेहत भी...</b></p>
+  <hr>
+  <h3>📋 Order Bill</h3>
+  <p>${c.lines.join("<br>")}</p>
+  <hr>
+  <p>Subtotal: ₹${c.sub}</p>
+  <p>Delivery: ${c.del===0?"FREE":"₹"+c.del}</p>
+  <h2>Grand Total: ₹${c.total}</h2>
+  <hr>
+  <p><b>Customer Details</b></p>
+  <p>नाम: ${name}<br>मोबाइल: ${phone}<br>पता: ${address}</p>
+  <p>🔐 Order Verification: WhatsApp पर पुष्टि के बाद Order Confirm होगा।</p>
+  <button onclick="sendWhatsApp()">📲 WhatsApp पर Order करें</button>
+  </div>`;
+
+  let old=document.getElementById("billBox");
+  if(old) old.remove();
+
+  document.body.insertAdjacentHTML("beforeend",bill);
+  document.getElementById("billBox").scrollIntoView({behavior:"smooth"});
+}
+
+function sendWhatsApp(){
+  const c=update();
+  const name=document.getElementById("name").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  const address=document.getElementById("address").value.trim();
+
+  let msg=`*Janta Kitchen - स्वाद की दुनिया*%0A%0A*नया Order*%0A${c.lines.join("%0A")}%0A%0ASubtotal: ₹${c.sub}%0ADelivery: ${c.del===0?"FREE":"₹"+c.del}%0A*Total: ₹${c.total}*%0A%0A*Customer Details*%0Aनाम: ${name}%0Aमोबाइल: ${phone}%0Aपता: ${address}%0A%0A🔐 Order Verification जरूरी है।`;
+
+  window.open("https://wa.me/918470861474?text="+msg,"_blank");
 }
 update();
 </script>
